@@ -29,7 +29,6 @@ def SubMenuConv():
         
     elif choix==2:
         print("Décimale > Hexadécimale")
-        TwoDigitTime()
 
     elif choix==3:
         print("Binaire > Décimale")
@@ -159,7 +158,7 @@ def EcritureBinaireEspacee(nombre2):
 
         nombre2espace = nombre2espace + caractere
         tour = tour+1
-        
+
     return nombre2espace
 
 

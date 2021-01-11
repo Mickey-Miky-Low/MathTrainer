@@ -10,26 +10,29 @@ while isLearning:
     print(' ')
     print('='*50)
     print(' ')
-    print("1...................Additions/Soustractions")
-    print("2...................Multiplications")
-    print("3...................Divisions")
-    print("4...................Conversions base 2, 10, 16")
-    print("5...................Quitter")
+    print("1...................Additions")
+    print("2...................Soustractions")
+    print("3...................Multiplications")
+    print("4...................Divisions")
+    print("5...................Conversions base 2, 10, 16")
+    print("6...................Quitter")
     print(' ')
     print('='*50)
     choix = int(input(""))
 
     if choix==1:
-        print("Additions/Soustractions")
-        
-
+        operations_basiques.SubMenuAdd()    #Appel du Sous Menu des Additions
+    
     elif choix==2:
-        operations_basiques.SubMenuMul()    #Appel du Sous Menu des Multiplications
+        operations_basiques.SubMenuSub()    #Appel du Sous Menu des Soustractions
 
     elif choix==3:
-        print("Divisions")
+        operations_basiques.SubMenuMul()    #Appel du Sous Menu des Multiplications
 
     elif choix==4:
+        operations_basiques.SubMenuDiv()    #Appel du Sous Menu des Divisions
+
+    elif choix==5:
         conversions_bases.SubMenuConv()     #Appel du Sous Menu des Conversions
 
     else:
