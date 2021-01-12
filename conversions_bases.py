@@ -24,11 +24,10 @@ def SubMenuConv():
     choix = int(input(""))
 
     if choix==1:
-        print("Décimale > Binaire")
         DecVersBin()
         
     elif choix==2:
-        print("Décimale > Hexadécimale")
+        DecVersHexa()
 
     elif choix==3:
         print("Binaire > Décimale")
@@ -70,14 +69,59 @@ def PC16Vers10(nombre16):
     somme = 0
     for caractere in nombre16:
         coeff = tableHexadecimale.index(caractere)
-        #print("indice Table : ", coeff)
-        #print("produit coeff : ",coeff * 16**(longueurNb16-1))
         somme = somme + coeff * 16**(longueurNb16-1)
         longueurNb16 = longueurNb16-1                                  #La puissance diminue à chaque tour
     
-    #print(somme)
     return somme
 
+
+
+"""
+Méthode qui convertit un Décimal en Hexadécimal
+"""
+def PC10Vers16(nombre10):
+    tableHexadecimale = ['0','1','2','3','4','5','6','7','8','9','A','B','C','D','E','F']
+    nombre16 = ""    #Initialisations
+    quotient = 1
+    dividende = nombre10
+    while quotient!=0:
+        
+        quotient = dividende//16
+
+        if dividende%16==0:
+            nombre16 = nombre16 + "0"
+        else:
+            reste = dividende%16
+            if 10<=reste<=15:
+                if reste==10:
+                    reste = 'A'
+                elif reste==11:
+                    reste = 'B'
+                elif reste==12:
+                    reste = 'C'
+                elif reste==13:
+                    reste = 'D'
+                elif reste==14:
+                    reste = 'E'
+                else:
+                    reste = 'F'
+            else:
+                reste = str(reste)
+
+            nombre16 = nombre16 + reste
+        
+        dividende = quotient
+    
+    #Retournement de la chaîne de caractères
+    nombre16final = ""
+    longNombre16final = len(nombre16)
+
+    for caractere in nombre16:
+    
+        nombre16final = nombre16final + nombre16[longNombre16final-1]
+        longNombre16final = longNombre16final-1
+        
+    return nombre16final
 
 
 
@@ -109,7 +153,6 @@ def PC10Vers2(nombre10):
         nombre2final = nombre2final + nombre2[longNombre2final-1]
         longNombre2final = longNombre2final-1
         
-        
     return nombre2final
 
 
@@ -122,6 +165,21 @@ faux -> si l'entrée comporte d'autres caractères
 def verificationEntree(choix):
     
     lettres = ['0','1','2','3','4','5','6','7','8','9']
+    for caractere in choix:
+        if caractere not in lettres:
+            return False
+    return True
+
+
+
+"""
+Fonction qui prend en paramètre l'entrée du joueur et qui renvoie :
+vrai -> Si l'entrée comporte seulement des caractères de base 16
+faux -> si l'entrée comporte d'autres caractères
+"""
+def verificationEntreeBase16(choix):
+    
+    lettres = ['0','1','2','3','4','5','6','7','8','9','A','B','C','D','E','F']
     for caractere in choix:
         if caractere not in lettres:
             return False
@@ -223,6 +281,66 @@ def HexaVersDec():
     print("Meilleur temps : ", meilleurTps)
     print("Pire temps : ", pireTps)
 
+
+
+"""
+Méthode qui affiche l'exercice de conversion 10 > 16
+"""
+def DecVersHexa():
+    print("\033[35mDécimale\033[37m > \033[36mHexadécimale\033[37m")
+    print("Attention :")
+    print(3)
+    time.sleep(1)
+    print(2)
+    time.sleep(1)
+    print(1)
+    time.sleep(1)
+    print("C'est parti !!")
+    print(" ")
+    print(" ")
+    print(" ")
+    tour = 0
+    score = 0
+    meilleurTps = 999999999
+    pireTps = 0
+
+    for tour in range(0,10):    #De 0 à 9
+        nombre10 = randint(0,255)   #Entre 0 inclu et 255 inclu
+        nombre16 = PC10Vers16(nombre10)
+        print("Base 10 : ", nombre10)
+        
+        tpsDep = time.time()
+
+        choixCorrect=False              #Vérification de l'entrée 
+        while choixCorrect==False:
+            choix = input("Base 16 : ")
+            
+            choixCorrect = verificationEntreeBase16(choix)
+
+        if choix==nombre16:
+            tpsArr = time.time()
+            tpsFinal = tpsArr - tpsDep
+            score=score+1
+            print("\033[32mCorrect : ", nombre10, "en base 10 donne", nombre16, "en base 16\033[37m")
+
+            if tpsFinal < meilleurTps:  #Actualisation meilleur temps
+                meilleurTps = tpsFinal
+            
+            if tpsFinal > pireTps:      #Actualisation pire temps
+                pireTps = tpsFinal
+    
+        else:
+            print("\033[31mFaux : ", nombre10, "en base 10 donne", nombre16, "en base 16\033[37m")
+        
+        print("\033[35m",score,"/",(tour+1),"\033[37m")
+        print(" ")
+
+    print(" ")
+    print(" ")
+    print(" ")
+    print("Score final : ", score,"/10")
+    print("Meilleur temps : ", meilleurTps)
+    print("Pire temps : ", pireTps)
 
 
 """
