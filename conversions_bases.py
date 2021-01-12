@@ -164,11 +164,11 @@ faux -> si l'entrée comporte d'autres caractères
 """
 def verificationEntree(choix):
     
-    lettres = ['0','1','2','3','4','5','6','7','8','9']
-    for caractere in choix:
-        if caractere not in lettres:
-            return False
-    return True
+    try:
+        choix = float(choix)    #S'il arrive à faire la conversion on renvoie True
+        return True
+    except ValueError:
+        return False
 
 
 
