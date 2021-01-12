@@ -21,16 +21,16 @@ while isLearning:
     choix = int(input(""))
 
     if choix==1:
-        operations_basiques.SubMenuAdd()    #Appel du Sous Menu des Additions
+        operations_basiques.SubMenuOp("addition")    #Appel du Sous Menu des Additions
     
     elif choix==2:
-        operations_basiques.SubMenuSub()    #Appel du Sous Menu des Soustractions
+        operations_basiques.SubMenuOp("soustraction")    #Appel du Sous Menu des Soustractions
 
     elif choix==3:
-        operations_basiques.SubMenuMul()    #Appel du Sous Menu des Multiplications
+        operations_basiques.SubMenuOp("multiplication")    #Appel du Sous Menu des Multiplications
 
     elif choix==4:
-        operations_basiques.SubMenuDiv()    #Appel du Sous Menu des Divisions
+        operations_basiques.SubMenuOp("division")    #Appel du Sous Menu des Divisions
 
     elif choix==5:
         conversions_bases.SubMenuConv()     #Appel du Sous Menu des Conversions
