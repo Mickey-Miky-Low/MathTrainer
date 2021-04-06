@@ -4,10 +4,10 @@ from random import randint
 """
 Méthode qui affiche le sous-menu "Conversions Bases"
 """
-def SubMenuConv():
+def SubMenuExercicesConv():
     print('='*50)
     print(' ')
-    print("Conversions Bases")
+    print("Exercices de Conversions Bases")
     print(' ')
     print('='*50)
     print(' ')
@@ -40,6 +40,42 @@ def SubMenuConv():
 
     elif choix==6:
         print("Hexadécimale > Binaire")
+
+    else:
+        print("Main Menu")
+
+
+
+
+"""
+Méthode qui affiche le sous-menu "Conversions Bases"
+"""
+def SubMenuConv():
+    print('='*50)
+    print(' ')
+    print("Conversions Bases")
+    print(' ')
+    print('='*50)
+    print(' ')
+    print("1.....................\033[35mDécimale\033[37m > ...")
+    print("2.....................\033[32mBinaire\033[37m > ...")
+    print("3.....................\033[36mHexadécimale\033[37m > ...")
+    print("4.....................Quitter")
+    print(' ')
+    print('='*50)
+
+    choix = int(input(""))
+
+    if choix==1:
+        nombre10 = int(input("Nombre décimal : "))
+        print("Nombre binaire :", PC10Vers2(nombre10))
+        print("Nombre héxadécimal :", PC10Vers16(nombre10))
+
+    elif choix==2:
+        print("En construction")
+
+    elif choix==3:
+        print("En construction")
 
     else:
         print("Main Menu")

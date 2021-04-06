@@ -14,8 +14,9 @@ while isLearning:
     print("2...................Soustractions")
     print("3...................Multiplications")
     print("4...................Divisions")
-    print("5...................Conversions base 2, 10, 16")
-    print("6...................Quitter")
+    print("5...................Exercices Conversions base 2, 10, 16")
+    print("6...................Conversions base 2, 10, 16")
+    print("7...................Quitter")
     print(' ')
     print('='*50)
     choix = int(input(""))
@@ -33,8 +34,11 @@ while isLearning:
         operations_basiques.SubMenuOp("division")    #Appel du Sous Menu des Divisions
 
     elif choix==5:
-        conversions_bases.SubMenuConv()     #Appel du Sous Menu des Conversions
+        conversions_bases.SubMenuExercicesConv()     #Appel du Sous Menu des Exercices de Conversions
 
+    elif choix==6:
+        conversions_bases.SubMenuConv()     #Appel du Sous Menu des Conversions
+    
     else:
         print("Bonne journée !")
         isLearning=False
